@@ -44,4 +44,28 @@ describe('<Logo />', () => {
       width: '16.5rem',
     })
   })
+
+  it('should render a logo by color default "green" with large size hiding smile', () => {
+    renderWithTheme(<Logo size="large" onHideSmile />)
+
+    expect(screen.getByLabelText('Mimoo').parentElement).toHaveStyleRule(
+      'width',
+      '12.5rem',
+      {
+        media: '(max-width: 768px)',
+      }
+    )
+  })
+
+  it('should render a logo by color default "green" with large size not hiding smile', () => {
+    renderWithTheme(<Logo size="large" onHideSmile />)
+
+    expect(screen.getByLabelText('Mimoo').parentElement).toHaveStyleRule(
+      'width',
+      '16.5rem',
+      {
+        media: '(min-width: 768px)',
+      }
+    )
+  })
 })

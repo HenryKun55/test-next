@@ -17,5 +17,6 @@ export const Text = styled.div`
     font-size: ${theme.font.normal};
     font-family: ${theme.font.family};
     color: ${theme.colors.white};
+    font-weight: ${theme.font.bold};
   `}
 `
