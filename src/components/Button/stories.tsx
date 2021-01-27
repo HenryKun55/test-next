@@ -1,12 +1,10 @@
-import { withKnobs, text } from '@storybook/addon-knobs'
 import { Story, Meta } from '@storybook/react/types-6-0'
 
-import { Button } from '.'
+import { Button, ButtonProps } from '.'
 
 export default {
   title: 'Button',
   component: Button,
-  decorators: [withKnobs],
 } as Meta
 
-export const Basic: Story = () => <Button text={text('Text', 'Button')} />
+export const Basic: Story<ButtonProps> = (args) => <Button {...args} />

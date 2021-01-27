@@ -84,4 +84,8 @@ export default {
     modal: 40,
     alwaysOnTop: 50,
   },
+  button: {
+    normal: '13rem',
+    large: '25rem',
+  },
 }
