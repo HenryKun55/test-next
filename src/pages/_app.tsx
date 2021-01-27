@@ -18,7 +18,7 @@ function App({ Component, pageProps }: AppProps) {
           <link rel="manifest" href="/manifest.json" />
           <meta
             name="description"
-            content="A simple project started to work with TypeScript, React, NextJS and Styled Components"
+            content="A simple project started to work with TypeScript,"
           />
         </Head>
         <GlobalStyles />
