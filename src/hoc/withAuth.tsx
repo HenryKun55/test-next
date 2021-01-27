@@ -1,18 +1,16 @@
-import { TOKEN_KEY } from 'api'
-import { SkeletonLoading } from 'components'
-import { useSelector } from 'hooks'
+// import { useSelector } from 'hooks'
 import cookie from 'js-cookie'
 import { NextPage } from 'next'
 import Router from 'next/router'
 import { useEffect, useState } from 'react'
+import { CookieSessions } from 'services/types'
 import { useAppDispatch } from 'store'
-import { selectIsAuthenticated } from 'store/auth/selectors'
-import { account } from 'store/auth/thunk'
 
 export const withAuth = (Component: NextPage): unknown => {
   const AuthComponent: NextPage = (props: any) => {
-    const token = cookie.get(TOKEN_KEY)
-    const isAuthenticated = useSelector(selectIsAuthenticated)
+    const token = cookie.get(CookieSessions.token)
+    // const isAuthenticated = useSelector(selectIsAuthenticated)
+    const isAuthenticated = true
 
     const dispatch = useAppDispatch()
     const [loading, setLoading] = useState(true)
@@ -21,7 +19,7 @@ export const withAuth = (Component: NextPage): unknown => {
       if (token) {
         // If has token, validate token if needed
         if (!isAuthenticated) {
-          dispatch(account())
+          // dispatch(account())
         }
       } else {
         Router.replace('/login')
@@ -35,11 +33,7 @@ export const withAuth = (Component: NextPage): unknown => {
     }, [isAuthenticated])
 
     // TODO: Add splash screen here
-    return loading ? (
-      <SkeletonLoading style={{ width: '100vw', height: '100vh' }} />
-    ) : (
-      <Component {...props} />
-    )
+    return loading ? <></> : <Component {...props} />
   }
 
   return AuthComponent

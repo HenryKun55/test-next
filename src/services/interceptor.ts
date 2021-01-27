@@ -1,13 +1,14 @@
-import { TOKEN_KEY } from 'api'
 import { AxiosInstance } from 'axios'
 import cookie from 'js-cookie'
 import Router from 'next/router'
+
+import { CookieSessions } from './types'
 
 export const configureInterceptors = (axios: AxiosInstance): void => {
   axios.interceptors.request.use((config) => {
     const headers = { ...config.headers }
 
-    const token = cookie.get(TOKEN_KEY)
+    const token = cookie.get(CookieSessions.token)
 
     if (token && !config.headers.Authorization) {
       headers.Authorization = `Bearer ${token}`

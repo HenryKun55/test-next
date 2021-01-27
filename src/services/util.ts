@@ -80,7 +80,7 @@ export async function justToken(config: AxiosRequestConfig) {
   }
 }
 
-export async function sessionExpired(error) {
+export async function sessionExpired(error: any) {
   const erroData = error.response?.data
   if (
     error === 'No current user' ||
